@@ -1,0 +1,26 @@
+{% extends "news/base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form method="post" class="mb-3">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h6>{% trans "Content" %}:</h6>
+                            {{ form.text }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6>{% trans "Tags" %}:</h6>
+                            {{ form.tags }}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">{% trans "Save" %}</button>
+                    <a href="{% url 'notes:note_list' %}" class="btn btn-secondary">{% trans "Discard" %}</a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

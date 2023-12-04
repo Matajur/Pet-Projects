@@ -1,0 +1,125 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+    />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'news/style.css' %}" />
+    <link rel="icon" href="{% static 'news/favicon.ico' %}"/>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'news:index' %}?lang={{ request.GET.lang }}">{% trans "Hello World!" %}</a>
+        <div class="currency-data ml-3">
+            {% if currency_data %}
+                {% for key, value in currency_data.items %}
+                    <span class="mr-2">{{ key }}: {{ value }}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'news:news_list' %}?lang={{ request.GET.lang }}">{% trans "News" %}</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'docs:user_files' %}?lang={{ request.GET.lang }}">{% trans "Files" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contacts:contact_list' %}?lang={{ request.GET.lang }}">{% trans "Contacts" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'notes:note_list' %}?lang={{ request.GET.lang }}">{% trans "Notes" %}</a>
+            </li>
+            {% endif %}
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <!-- Language Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {% trans "Language" %}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                <li><a class="dropdown-item" href="?lang=en">{% trans "English" %}</a></li>
+                <li><a class="dropdown-item" href="?lang=uk">{% trans "Українська" %}</a></li>
+                <!-- Add more languages as needed -->
+              </ul>
+            </li>
+            <!-- End Language Dropdown -->
+
+            {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {% trans "Welcome" %}, {{ user.username }}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{% url 'news:news_list' %}?lang={{ request.GET.lang }}">{% trans "News" %}</a></li>
+                <li><a class="dropdown-item" href="{% url 'docs:user_files' %}?lang={{ request.GET.lang }}">{% trans "Files" %}</a></li>
+                <li><a class="dropdown-item" href="{% url 'contacts:contact_list' %}?lang={{ request.GET.lang }}">{% trans "Contacts" %}</a></li>
+                <li><a class="dropdown-item" href="{% url 'notes:note_list' %}?lang={{ request.GET.lang }}">{% trans "Notes" %}</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="{% url 'users:logout' %}?lang={{ request.GET.lang }}">{% trans "Logout" %}</a></li>
+              </ul>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'users:signup' %}?lang={{ request.GET.lang }}">{% trans "Sign Up" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'users:login' %}?lang={{ request.GET.lang }}">{% trans "Login" %}</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+        <div class="switch-container d-inline-block ml-2">
+          <input type="checkbox" class="switch">
+          <div class="lamp">
+              <div class="light"></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">{% block content %} {% endblock %}</div>
+    </div>
+    <!-- Added Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const switchElement = document.querySelector('.switch');
+
+        // Download the theme from localStorage and apply it
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-bs-theme', savedTheme);
+            if (savedTheme === 'light') {
+                switchElement.checked = true;
+            }
+        }
+
+        if (switchElement) {
+            switchElement.addEventListener('change', function() {
+                if (this.checked) {
+                    document.documentElement.setAttribute('data-bs-theme', 'light');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    document.documentElement.setAttribute('data-bs-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+        }
+    });
+  </script>
+  </body>
+</html>

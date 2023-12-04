@@ -1,0 +1,41 @@
+{% extends "news/base.html" %}
+{% load i18n %}
+{% block content %}
+<h1>{% trans "Login" %}</h1>
+
+<!-- Display flash notification -->
+<!-- {% if messages %} -->
+<!-- {% for message in messages %} -->
+<!-- <div {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %} role="alert"> -->
+  <!-- {{message}} -->
+<!-- </div> -->
+<!-- {% endfor %} -->
+<!-- {% endif %} -->
+
+<!-- Processing form errors that do not relate to fields -->
+{% if form.errors %}
+<div class="alert alert-danger" role="alert">{{form.non_field_errors}}</div>
+{% endif %}
+
+<form method="post">
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="mb-3">
+      <label class="form-label">{% trans "Username" %}</label>
+      {{form.username}}
+    </div>
+    <span>{{form.errors.username}}</span>
+  </div>
+  <div class="form-row">
+    <div class="mb-3">
+      <label class="form-label">{% trans "Password" %}</label>
+      {{form.password}}
+    </div>
+    <span>{{form.errors.password}}</span>
+  </div>
+  <button type="submit" class="btn btn-primary">{% trans "Log In" %}</button>
+  <div class="small text-center">
+    <a href="{% url 'users:password_reset' %}" class="text-center"><i>{% trans "Forgot Password?" %}</i></a>
+  </div>
+</form>
+{% endblock %}

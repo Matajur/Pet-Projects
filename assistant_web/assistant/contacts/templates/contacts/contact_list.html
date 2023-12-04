@@ -1,0 +1,45 @@
+{% extends "news/base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <h1>{% trans "Contact List" %}</h1>
+    <div class="col-md-8">
+        <a href="{% url 'contacts:add_contact' %}" class="btn btn-primary">{% trans "Add New" %}</a>
+        <a href="{% url 'contacts:upcoming_birthdays' %}" class="btn btn-info">{% trans "Upcoming Birthdays" %}</a>
+    </div>
+    <form method="GET" action="{% url 'contacts:search_contacts' %}" class="form-inline my-2">
+        <input class="form-control mr-sm-2" type="text" name="q" placeholder="{% trans "Search by name, email or phone" %}" value="{{ query }}">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{% trans "Search" %}</button>
+        <a class="btn btn-secondary" href="{% url 'contacts:contact_list' %}">{% trans "Reset" %}</a>
+    </form>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>{% trans "First Name" %}</th>
+                <th>{% trans "Family Name" %}</th>
+                <th>{% trans "Address" %}</th>
+                <th>{% trans "Phone" %}</th>
+                <th>{% trans "Email" %}</th>
+                <th>{% trans "Birthdate" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.thurname }}</td>
+                <td>{{ contact.address }}</td>
+                <td>{{ contact.phone }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.birthdate }}</td>
+                <td>
+                    <a href="{% url 'contacts:edit_contact' contact_id=contact.id %}" class="btn btn-warning btn-sm">{% trans "Edit" %}</a>
+                    <a href="{% url 'contacts:delete_contact' contact_id=contact.id %}" class="btn btn-danger btn-sm">{% trans "Delete" %}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "assistant_console"
+version = "0.1.0"
+description = "personal assistant"
+authors = ["Matajur"]
+license = "Apache License 2.0"
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+black = "^23.3.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[project.urls]
+"Homepage" = "https://github.com/Matajur/Pet-Projects/assistant_console"

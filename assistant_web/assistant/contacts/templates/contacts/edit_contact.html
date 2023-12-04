@@ -1,0 +1,39 @@
+{% extends "news/base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <h1>{% trans "Edit Contact" %}</h1>
+
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        <div class="col-md-8">
+            <div class="row mb-3">
+                <h6>{% trans "First Name" %}:</h6>
+                {{ form.name }}
+            </div>
+            <div class="row mb-3">
+                <h6>{% trans "Family Name" %}:</h6>
+                {{ form.thurname }}
+            </div>
+            <div class="row mb-3">
+                <h6>{% trans "Address" %}:</h6>
+                {{ form.address }}
+            </div>
+            <div class="row mb-3">
+                <h6>{% trans "Phone" %}:</h6>
+                {{ form.phone }}
+            </div>
+            <div class="row mb-3">
+                <h6>{% trans "Email" %}:</h6>
+                {{ form.email }}
+            </div>
+            <div class="row mb-3">
+                <h6>{% trans "Birthdate" %}:</h6>
+                {{ form.birthdate }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">{% trans "Save" %}</button>
+        <a class="btn btn-secondary" href="{% url 'contacts:contact_list' %}">{% trans "Discard" %}</a>
+    </form>
+{% endblock %}

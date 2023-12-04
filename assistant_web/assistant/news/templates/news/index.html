@@ -1,0 +1,13 @@
+{% extends 'news/base.html'%}
+{% load static %}
+{% block content %}
+<link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
+<div class="col-md-8">
+    <div class="title-container">
+        <h1 class="project-title"></h1>
+        <button class="flip-text-btn"></button>
+    </div>
+    
+    <script defer src="{% static 'news/title-animation.js' %}"></script>
+</div>
+{% endblock %}

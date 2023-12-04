@@ -1,0 +1,36 @@
+{% extends "news/base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <h1 class="mt-4">{% trans "Upcoming Birthdays" %}</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>{% trans "First Name" %}</th>
+                <th>{% trans "Family Name" %}</th>
+                <th>{% trans "Address" %}</th>
+                <th>{% trans "Phone" %}</th>
+                <th>{% trans "Email" %}</th>
+                <th>{% trans "Birthdate" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.thurname }}</td>
+                <td>{{ contact.address }}</td>
+                <td>{{ contact.phone }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.birthdate }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Links -->
+    <div class="col-md-8">
+        <a class="btn btn-secondary" href="{% url 'contacts:contact_list' %}">{% trans "Back" %}</a>
+    </div>
+{% endblock %}

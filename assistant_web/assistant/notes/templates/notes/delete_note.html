@@ -1,0 +1,26 @@
+{% extends "news/base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-danger text-white">
+                        {% trans "Delete Note" %}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{% trans "Are you sure you want to delete this note?" %}</h5>
+                        <p class="card-text">{{ note.text }} - {{ note.tags }}</p>
+                        
+                        <form method="post" class="mt-4">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">{% trans "Delete" %}</button>
+                            <a href="{% url 'notes:note_list' %}" class="btn btn-secondary">{% trans "Cancel and Back to Note List" %}</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

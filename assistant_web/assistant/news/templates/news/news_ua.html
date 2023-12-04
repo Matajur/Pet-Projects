@@ -1,0 +1,32 @@
+{% extends "news/base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex flex-wrap justify-content-between mb-4">
+        {% for category, title in categories %}
+            <div class="card m-2" style="width: 18rem;">
+                <a href="{% url 'news:news_ua_topic' topic=category %}?lang={{ request.GET.lang }}" class="card-link d-flex justify-content-center align-items-center" style="height: 100%;">
+                    <h5 class="{% if topic == category %}text-primary{% else %}{% endif %}">{{ title }}</h5>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="list-group">
+        {% for item in news %}
+        <a href="{{ item.url }}" target="_blank" class="list-group-item list-group-item-action mb-2">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ item.title }}</h5>
+                <small>{{ item.date }}</small>
+            </div>
+            <p class="mb-1">{{ item.content }}</p>
+        </a>
+        {% empty %}
+        <div class="alert alert-info" role="alert">
+            Новин немає.
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

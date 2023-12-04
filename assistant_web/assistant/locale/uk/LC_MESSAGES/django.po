@@ -1,0 +1,414 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-20 13:28+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+#: .\contacts\templates\contacts\add_contact.html:5
+msgid "Add Contact"
+msgstr "Додати контакт"
+
+#: .\contacts\templates\contacts\delete_contact.html:7
+msgid "Contact Name"
+msgstr "Контакт"
+
+#: .\contacts\templates\contacts\add_contact.html:51
+#: .\contacts\templates\contacts\увше_contact.html:51
+msgid "obligatory_field"
+msgstr "обов'язкове_поле"
+
+#: .\contacts\templates\contacts\add_contact.html:11
+#: .\contacts\templates\contacts\contact_list.html:16
+#: .\contacts\templates\contacts\edit_contact.html:11
+#: .\contacts\templates\contacts\upcoming_birthdays.html:10
+#: .\users\templates\users\signup.html:16
+msgid "First Name"
+msgstr "Ім'я"
+
+#: .\contacts\templates\contacts\add_contact.html:16
+#: .\contacts\templates\contacts\contact_list.html:17
+#: .\contacts\templates\contacts\edit_contact.html:16
+#: .\contacts\templates\contacts\upcoming_birthdays.html:11
+msgid "Family Name"
+msgstr "Прізвище"
+
+#: .\contacts\templates\contacts\add_contact.html:21
+#: .\contacts\templates\contacts\contact_list.html:18
+#: .\contacts\templates\contacts\edit_contact.html:21
+#: .\contacts\templates\contacts\upcoming_birthdays.html:12
+msgid "Address"
+msgstr "Адреса"
+
+#: .\contacts\templates\contacts\add_contact.html:26
+#: .\contacts\templates\contacts\contact_list.html:19
+#: .\contacts\templates\contacts\edit_contact.html:26
+#: .\contacts\templates\contacts\upcoming_birthdays.html:13
+msgid "Phone"
+msgstr "Телефон"
+
+#: .\contacts\templates\contacts\add_contact.html:31
+#: .\contacts\templates\contacts\contact_list.html:20
+#: .\contacts\templates\contacts\edit_contact.html:31
+#: .\contacts\templates\contacts\upcoming_birthdays.html:14
+#: .\users\templates\users\signup.html:30
+msgid "Email"
+msgstr "Електронна пошта"
+
+#: .\contacts\templates\contacts\add_contact.html:36
+#: .\contacts\templates\contacts\contact_list.html:21
+#: .\contacts\templates\contacts\edit_contact.html:36
+#: .\contacts\templates\contacts\upcoming_birthdays.html:15
+msgid "Birthdate"
+msgstr "Дата народження"
+
+#: .\contacts\templates\contacts\add_contact.html:40
+#: .\contacts\templates\contacts\edit_contact.html:40
+#: .\notes\templates\notes\create_note.html:19
+msgid "Save"
+msgstr "Зберегти"
+
+#: .\contacts\templates\contacts\add_contact.html:41
+#: .\contacts\templates\contacts\delete_contact.html:13
+#: .\contacts\templates\contacts\edit_contact.html:41
+msgid "Discard"
+msgstr "Відмінити"
+
+#: .\contacts\templates\contacts\contact_list.html:5
+msgid "Contact List"
+msgstr "Перелік контактів"
+
+#: .\contacts\templates\contacts\contact_list.html:9
+msgid "Search by name, email or phone"
+msgstr "Пошук по імені, електронній пошті або телефону"
+
+#: .\contacts\templates\contacts\contact_list.html:10
+#: .\notes\templates\notes\note_list.html:13
+msgid "Search"
+msgstr "Пошук"
+
+#: .\contacts\templates\contacts\contact_list.html:34
+#: .\notes\templates\notes\note_list.html:29
+msgid "Edit"
+msgstr "Редагувати"
+
+#: .\contacts\templates\contacts\contact_list.html:35
+#: .\contacts\templates\contacts\delete_contact.html:12
+#: .\docs\templates\docs\user_files.html:37
+#: .\notes\templates\notes\delete_note.html:18
+#: .\notes\templates\notes\note_list.html:30
+msgid "Delete"
+msgstr "Видалити"
+
+#: .\contacts\templates\contacts\contact_list.html:43
+msgid "Add New"
+msgstr "Додати"
+
+#: .\contacts\templates\contacts\contact_list.html:44
+msgid "Reset"
+msgstr "Очистити"
+
+#: .\contacts\templates\contacts\contact_list.html:44
+#: .\contacts\templates\contacts\upcoming_birthdays.html:5
+msgid "Upcoming Birthdays"
+msgstr "Найближчі дні народження"
+
+#: .\contacts\templates\contacts\delete_contact.html:5
+msgid "Delete Contact"
+msgstr "Видалити контакт"
+
+#: .\contacts\templates\contacts\delete_contact.html:6
+msgid "Are you sure you want to delete?"
+msgstr "Ви впевнені, що хочете видалити?"
+
+#: .\contacts\templates\contacts\edit_contact.html:5
+msgid "Edit Contact"
+msgstr "Редагувати контакт"
+
+#: .\contacts\templates\contacts\upcoming_birthdays.html:33
+msgid "Back"
+msgstr "Назад"
+
+#: .\docs\templates\docs\user_files.html:5
+msgid "Upload a File"
+msgstr "Завантажити файли"
+
+#: .\docs\templates\docs\user_files.html:18
+msgid "File Name"
+msgstr "Ім'я файлу"
+
+#: .\docs\templates\docs\user_files.html:19
+msgid "Upload Date"
+msgstr "Дата завантаження"
+
+#: .\docs\templates\docs\user_files.html:20
+msgid "Category"
+msgstr "Фільтр по категоріям"
+
+#: .\docs\templates\docs\user_files.html:21
+msgid "Actions"
+msgstr "Дії"
+
+#: .\docs\templates\docs\user_files.html:36
+msgid "Rename"
+msgstr "Перейменувати"
+
+#: .\docs\templates\docs\user_files.html:38
+msgid "Open"
+msgstr "Відкрити"
+
+#: .\docs\templates\docs\user_files.html:47
+msgid "You have not uploaded any files yet."
+msgstr "Ви ще не завантажили жодного файлу."
+
+#: .\docs\templates\docs\user_files.html:55
+msgid "Filter by Category"
+msgstr "Фільтр по категоріям"
+
+#: .\docs\templates\docs\user_files.html:70
+#: .\notes\templates\notes\note_list.html:62
+msgid "Latest News"
+msgstr "Останні новини"
+
+#: .\docs\templates\docs\user_files.html:91
+msgid "Rename File"
+msgstr "Перейменувати файл"
+
+#: .\docs\templates\docs\user_files.html:97
+msgid "New File Name"
+msgstr "Нове ім'я файлу"
+
+#: .\docs\templates\docs\user_files.html:104
+msgid "Close"
+msgstr "Закрити"
+
+#: .\docs\templates\docs\user_files.html:105
+msgid "Save changes"
+msgstr "Зберегти зміни"
+
+#: .\news\templates\news\base.html:22
+msgid "Hello World!"
+msgstr "Привіт, світ!"
+
+#: .\news\templates\news\base.html:33 .\news\templates\news\base.html:67
+msgid "News"
+msgstr "Новини"
+
+#: .\news\templates\news\base.html:37 .\news\templates\news\base.html:68
+msgid "Files"
+msgstr "Файли"
+
+#: .\news\templates\news\base.html:40 .\news\templates\news\base.html:69
+msgid "Contacts"
+msgstr "Контакти"
+
+#: .\news\templates\news\base.html:43 .\news\templates\news\base.html:70
+msgid "Notes"
+msgstr "Нотатки"
+
+#: .\news\templates\news\base.html:51
+msgid "Language"
+msgstr "Мовна палітра"
+
+#: .\news\templates\news\base.html:54
+msgid "English"
+msgstr "English"
+
+#: .\news\templates\news\base.html:55
+msgid "Українська"
+msgstr "Українська"
+
+#: .\news\templates\news\base.html:64
+msgid "Welcome"
+msgstr "Вітаю"
+
+#: .\news\templates\news\base.html:72
+msgid "Logout"
+msgstr "Вийти"
+
+#: .\news\templates\news\base.html:77 .\users\templates\users\signup.html:49
+msgid "Sign Up"
+msgstr "Реєстрація"
+
+#: .\news\templates\news\base.html:80 .\users\templates\users\login.html:4
+msgid "Login"
+msgstr "Увійти"
+
+#: .\news\templates\news\news_list.html:26
+msgid "No news available."
+msgstr "Новини відсутні."
+
+#: .\notes\templates\notes\create_note.html:20
+#: .\notes\templates\notes\edit_note.html:21
+#: .\notes\templates\notes\note_list.html:39
+msgid "Notes List"
+msgstr "Перелік нотаток"
+
+msgid "Back to Note List"
+msgstr "Повернутися до списку нотаток"
+
+#: .\notes\templates\notes\delete_note.html:10
+msgid "Delete Note"
+msgstr "Видалити нотатку"
+
+#: .\notes\templates\notes\delete_note.html:13
+msgid "Are you sure you want to delete this note?"
+msgstr "Ви впевнені, що хочете видалити?"
+
+#: .\notes\templates\notes\delete_note.html:19
+msgid "Cancel and Back to Note List"
+msgstr "Скасувати та повернутися до списку нотаток"
+
+#: .\notes\templates\notes\edit_note.html:8
+msgid "Edit Note"
+msgstr "Редагувати нотатку"
+
+#: .\notes\templates\notes\edit_note.html:20
+msgid "Save Changes"
+msgstr "Зберегти зміни"
+
+msgid "Create New Note"
+msgstr "Створити нову нотатку"
+
+#: .\notes\templates\notes\note_list.html:12
+msgid "Search by tags"
+msgstr "Пошук за тегами"
+
+#: .\notes\templates\notes\note_list.html:34
+msgid "No notes available."
+msgstr "Нотатки відсутні"
+
+#: .\users\templates\users\login.html:24 .\users\templates\users\signup.html:9
+msgid "Username"
+msgstr "Ім'я користувача"
+
+#: .\users\templates\users\login.html:31 .\users\templates\users\signup.html:37
+msgid "Password"
+msgstr "Пароль"
+
+#: .\users\templates\users\login.html:36
+msgid "Log In"
+msgstr "Увійти"
+
+#: .\users\templates\users\login.html:38
+msgid "Forgot Password?"
+msgstr "Забули пароль?"
+
+#: .\users\templates\users\logout.html:4
+msgid "See you later"
+msgstr "До побачення"
+
+#: .\users\templates\users\password_reset.html:5
+msgid "Password reset"
+msgstr "Відновлення паролю"
+
+#: .\users\templates\users\password_reset.html:8
+msgid "Request password reset"
+msgstr "Запит на відновлення паролю"
+
+#: .\users\templates\users\password_reset_complete.html:4
+msgid "Password reset complete!"
+msgstr "Відновлення паролю завершено!"
+
+#: .\users\templates\users\password_reset_confirm.html:5
+msgid "Enter new password"
+msgstr "Введіть новий пароль"
+
+#: .\users\templates\users\password_reset_confirm.html:8
+msgid "Save new password"
+msgstr "Зберегти новий пароль"
+
+#: .\users\templates\users\password_reset_done.html:5
+msgid "Password reset request sent"
+msgstr "Запит на відновлення паролю відправлено"
+
+#: .\users\templates\users\password_reset_done.html:7
+msgid ""
+"Shortly you will receive an email with instructions to reset your password"
+msgstr ""
+"Незабаром ви отримаєте електронний лист з інструкціями по відновленню паролю"
+
+#: .\users\templates\users\password_reset_email.html:5
+msgid "Hi"
+msgstr "Привіт"
+
+#: .\users\templates\users\password_reset_email.html:7
+msgid ""
+"You requested a password reset for your account. Please follow this link to "
+"set a new password:"
+msgstr ""
+"Ви запросили відновлення паролю для вашого облікового запису. Будь ласка, "
+"перейдіть за цим посиланням, щоб встановити новий пароль:"
+
+#: .\users\templates\users\password_reset_email.html:11
+msgid "Reset password"
+msgstr "Відновити пароль"
+
+#: .\users\templates\users\password_reset_email.html:14
+msgid "If you didn't request a password reset, please ignore this email."
+msgstr ""
+"Якщо ви не запитували відновлення паролю, будь ласка, ігноруйте цей лист."
+
+#: .\users\templates\users\password_reset_email.html:15
+msgid "Sincerely Yours,"
+msgstr "З повагою,"
+
+#: .\users\templates\users\password_reset_email.html:16
+msgid "Your Hangover Team"
+msgstr "Ваша команда Hangover"
+
+#: .\users\templates\users\signup.html:4
+msgid "SignUp"
+msgstr "Зареєструватись"
+
+#: .\users\templates\users\signup.html:23
+#, fuzzy
+#| msgid "First Name"
+msgid "Last Name"
+msgstr "Ім'я"
+
+#: .\users\templates\users\signup.html:44
+msgid "Confirm password"
+msgstr "Підтвердити пароль"
+
+#~ msgid "Add Note"
+#~ msgstr "Додати нотатку"
+
+#~ msgid "Your files"
+#~ msgstr "Ваші Файлики"
+
+msgid "News List"
+msgstr "Перелік новин"
+
+msgid "Content"
+msgstr "Вміст"
+
+msgid "Tags"
+msgstr "Ключові слова"
+
+#, fuzzy
+#~| msgid "Files"
+#~ msgid "User Files"
+#~ msgstr "Файли"
+
+#~ msgid "Published at"
+#~ msgstr "Опубліковано в"
+
+#~ msgid "Put Here Your Title"
+#~ msgstr "Встав сюди свій заголовок"

@@ -1,0 +1,240 @@
+{% extends "news/base.html" %}
+{% load i18n %}
+{% block content %}
+<h3><input type="file" id="fileInput" style="display:none;"></h3>
+<button onclick="document.getElementById('fileInput').click();" class="btn btn-primary mb-2">{% trans "Upload a File" %}</button>
+
+<form method="post" enctype="multipart/form-data" id="uploadForm" action="{% url 'docs:user_files' %}" style="display:none;">
+    {% csrf_token %}
+    <input type="file" name="file" id="realFileInput">
+</form>
+
+<div class="row">
+    <div class="col-md-9">
+        {% if files %}
+        <table class="table" id="filesTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">{% trans "File Name" %} ⇅</th>
+                    <th onclick="sortTable(1)">{% trans "Upload Date" %} ⇅</th>
+                    <th onclick="sortTable(2)">{% trans "Category" %} ⇅</th>
+                    <th>{% trans "Actions" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for file in files %}
+                <tr>
+                    <td>{{ file.display_name }}</td>
+                    <td>{{ file.upload_date }}</td>
+                    <td>{{ file.category }}</td>
+                    <td>
+                        <div class="dropdown">
+                            <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                &#x2022;&#x2022;&#x2022;
+                            </span>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="#" onclick="openRenameModal('{{ file.id }}', '{{ file.get_display_filename }}')">{% trans "Rename" %}</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="deleteFile('{{ file.id }}')">{% trans "Delete" %}</a></li>
+                                <li><a class="dropdown-item" href="{{ file.file.url }}" download>{% trans "Open" %}</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>{% trans "You have not uploaded any files yet." %}</p>
+        {% endif %}
+    </div>
+
+    <div class="col-md-3">
+        <!-- Фільтр файлів у рамці -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">{% trans "Filter by Category" %}:</h5>
+                {% for category in file_categories %}
+                <div class="form-check">
+                    <input class="form-check-input category-filter" type="checkbox" value="{{ category }}" id="category-{{ category }}" checked>
+                    <label class="form-check-label" for="category-{{ category }}">
+                        {{ category }}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    
+        <!-- Віджет з новинами -->
+        <div class="card mt-4 news-widget">
+            <div class="card-header">
+                <strong>{% trans "Latest News" %}</strong>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    {% for news_item in latest_news %}
+                        <li class="mb-2">
+                            <a href="{{ news_item.url }}" class="news-link">{{ news_item.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <!-- Віджет з новинами -->
+    </div>
+</div>
+
+<!-- Модальне вікно для редагування імені файлу -->
+<div class="modal fade" id="renameModal" tabindex="-1" aria-labelledby="renameModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="renameModalLabel">{% trans "Rename File" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="renameForm">
+                    <div class="mb-3">
+                        <label for="newFileName" class="form-label">{% trans "New File Name" %}</label>
+                        <input type="text" class="form-control" id="newFileName">
+                    </div>
+                    <input type="hidden" id="fileIdToRename">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Close" %}</button>
+                <button type="button" class="btn btn-primary" id="saveRename">{% trans "Save changes" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Обробник подій для автоматичного надсилання форми після вибору файлу
+    document.getElementById('fileInput').addEventListener('change', function() {
+        const form = document.getElementById('uploadForm');
+        const realFileInput = document.getElementById('realFileInput');
+        realFileInput.files = this.files;
+        form.submit();
+    });
+
+
+    function sortTable(columnIndex) {
+    var table, rows, switching, i, x, y, shouldSwitch, direction, switchCount = 0;
+    table = document.getElementById("filesTable");
+    switching = true;
+    direction = "asc";
+
+    while (switching) {
+        switching = false;
+        rows = table.rows;
+
+        for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+
+            x = rows[i].getElementsByTagName("TD")[columnIndex];
+            y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+
+            if (direction == "asc") {
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            } else if (direction == "desc") {
+                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+        }
+
+        if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            switchCount++;
+        } else {
+            if (switchCount == 0 && direction == "asc") {
+                direction = "desc";
+                switching = true;
+            }
+        }
+    }
+}
+
+    // Функція для відкриття модального вікна з інформацією про конкретний файл
+    function openRenameModal(fileId, currentName) {
+        // Встановлюємо поточне ім'я файлу у полі вводу
+        document.getElementById('newFileName').value = currentName;
+        // Зберігаємо ID файлу у прихованому полі
+        document.getElementById('fileIdToRename').value = fileId;
+        // Відкриваємо модальне вікно
+        new bootstrap.Modal(document.getElementById('renameModal')).show();
+    }
+
+    // Обробник події для кнопки "Зберегти зміни" у модальному вікні
+    document.getElementById('saveRename').addEventListener('click', function() {
+        const fileId = document.getElementById('fileIdToRename').value;
+        const newFileName = document.getElementById('newFileName').value;
+
+        // AJAX-запит
+        fetch("/docs/rename/", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+            },
+            body: new URLSearchParams({
+                'file_id': fileId,
+                'new_name': newFileName
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                location.reload();
+            } else {
+                alert(data.message);
+            }
+        });
+
+        // Приховуємо модальне вікно
+        new bootstrap.Modal(document.getElementById('renameModal')).hide();
+    });
+
+    function deleteFile(fileId) {
+        if (confirm("Are you sure you want to delete this file?")) {
+            fetch("/docs/delete/", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: new URLSearchParams({
+                    'file_id': fileId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    location.reload();
+                } else {
+                    alert(data.message);
+                }
+            });
+        }
+    }
+    // Обробник подій для фільтрації таблиці за категорією
+    document.querySelectorAll('.category-filter').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const category = this.value;
+            const isChecked = this.checked;
+            document.querySelectorAll('#filesTable tbody tr').forEach(row => {
+                if (row.querySelector('td:nth-child(3)').innerText === category) {
+                    row.style.display = isChecked ? '' : 'none';
+                }
+            });
+        });
+    });
+
+</script>
+
+{% endblock %}

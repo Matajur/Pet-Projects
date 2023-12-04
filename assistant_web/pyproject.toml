@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "teamwork 2 - web"
+version = "0.1.0"
+description = "Personal Assistant: WEB App"
+authors = ["Project Team 3"]
+license = "Apache License 2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4"
+django = "^4.2.6"
+django-environ = "^0.11.2"
+psycopg2 = "^2.9.9"
+django-storages = {extras = ["boto3"], version = "^1.14.2"}
+requests = "^2.31.0"
+django-phonenumber-field = {extras = ["phonenumbers"], version = "^7.2.0"}
+beautifulsoup4 = "^4.12.2"
+
+
+[tool.poetry.group.dev.dependencies]
+sphinx = "^7.2.6"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

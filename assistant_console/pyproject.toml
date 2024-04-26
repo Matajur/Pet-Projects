@@ -1,20 +1,17 @@
 [tool.poetry]
-name = "assistant_console"
-version = "0.1.0"
-description = "personal assistant"
-authors = ["Matajur"]
+name = "pa_quadro"
+version = "1.1.19"
+description = "Personal assistant for managing contacts and notes"
+authors = ["Project-Team-Quadro"]
 license = "Apache License 2.0"
 readme = "README.md"
-packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-black = "^23.3.0"
 
+[tool.poetry.dev-dependencies]
+setuptools = "^69.1.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-[project.urls]
-"Homepage" = "https://github.com/Matajur/Pet-Projects/assistant_console"
